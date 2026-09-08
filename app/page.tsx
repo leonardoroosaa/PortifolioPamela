@@ -30,6 +30,19 @@ type GalleryItem = {
   description: string;
 };
 
+type Project = {
+  title: string;
+  lead: string;
+  description: string[];
+  stats: string[];
+  images: GalleryItem[];
+};
+
+type ActiveImage = {
+  projectIndex: number;
+  imageIndex: number;
+};
+
 const navItems = [
   ['Início', 'hero'],
   ['Sobre', 'sobre'],
@@ -60,7 +73,7 @@ const differentiators = [
   { title: 'Atendimento Personalizado', icon: MessageCircle, text: 'Acompanhamento próximo, humano e alinhado ao perfil de cada cliente.' },
 ];
 
-const projectImages: GalleryItem[] = [
+const casaDouroImages: GalleryItem[] = [
   {
     title: 'Cozinha',
     src: '/projetos/cozinha.webp',
@@ -99,6 +112,150 @@ const projectImages: GalleryItem[] = [
   },
 ];
 
+const casaFigueiroDescription = [
+  'Este projeto de remodelação, localizado em Figueiró dos Vinhos, parte da recuperação integral de uma antiga ruína, que será totalmente restaurada e adaptada a uma nova vivência.',
+  'Fui convidada a desenvolver a intervenção em algumas zonas específicas da habitação, tendo como principal premissa respeitar a identidade original da casa. Um dos pedidos mais importantes do cliente foi preservar as antigas paredes e elementos em pedra, mantendo visível a história e o caráter da construção existente.',
+  'A proposta foi, por isso, pensada para criar um equilíbrio entre o antigo e o contemporâneo, introduzindo maior funcionalidade, conforto e harmonia aos espaços sem descaracterizar a essência da moradia.',
+  'Cada escolha de materiais, iluminação, mobiliário e organização dos ambientes foi pensada de forma a valorizar os elementos originais e permitir que a pedra continue a assumir um papel de destaque no projeto.',
+];
+
+const casaFigueiroImages: GalleryItem[] = [
+  {
+    title: 'Área de convívio',
+    src: '/projetos/casa-figueiro/area-convivio.jpeg',
+    alt: 'Área de convívio do projeto Casa Figueiró',
+    description: casaFigueiroDescription[3],
+  },
+  {
+    title: 'Área externa',
+    src: '/projetos/casa-figueiro/area-externa-2.png',
+    alt: 'Área externa do projeto Casa Figueiró',
+    description: casaFigueiroDescription[2],
+  },
+  {
+    title: 'Churrasqueira',
+    src: '/projetos/casa-figueiro/area-externa-churrasqueira.png',
+    alt: 'Área externa da churrasqueira do projeto Casa Figueiró',
+    description: casaFigueiroDescription[3],
+  },
+  {
+    title: 'Banheiro superior',
+    src: '/projetos/casa-figueiro/banheiro-cima.jpeg',
+    alt: 'Banheiro superior do projeto Casa Figueiró',
+    description: casaFigueiroDescription[2],
+  },
+  {
+    title: 'Escada',
+    src: '/projetos/casa-figueiro/escada.png',
+    alt: 'Escada do projeto Casa Figueiró',
+    description: casaFigueiroDescription[1],
+  },
+  {
+    title: 'Quarto abaixo do deck',
+    src: '/projetos/casa-figueiro/quarto-abaixo-deck.jpeg',
+    alt: 'Quarto abaixo do deck do projeto Casa Figueiró',
+    description: casaFigueiroDescription[2],
+  },
+  {
+    title: 'Quarto Casa 1',
+    src: '/projetos/casa-figueiro/quarto-casa-1.jpeg',
+    alt: 'Quarto do projeto Casa Figueiró',
+    description: casaFigueiroDescription[3],
+  },
+  {
+    title: 'Quarto deck',
+    src: '/projetos/casa-figueiro/quarto-deck-finalizado.png',
+    alt: 'Quarto com deck do projeto Casa Figueiró',
+    description: casaFigueiroDescription[2],
+  },
+  {
+    title: 'Sala',
+    src: '/projetos/casa-figueiro/sala-1.jpeg',
+    alt: 'Sala do projeto Casa Figueiró',
+    description: casaFigueiroDescription[3],
+  },
+];
+
+const casaAzeitaoDescription = [
+  'Neste projeto, o cliente já possuía praticamente todo o mobiliário que seria utilizado na casa. O principal objetivo foi ajudá-lo a visualizar como os ambientes poderiam ficar organizados e harmonizados, aproveitando ao máximo os elementos existentes.',
+  'A proposta teve como foco valorizar o que o cliente já possuía, trabalhando a disposição do mobiliário e acrescentando apenas elementos simples, acessíveis e fáceis de encontrar, como iluminação, têxteis, objetos decorativos e pequenos complementos.',
+  'O resultado procurou demonstrar que nem sempre é necessário substituir todo o mobiliário para transformar um ambiente. Com escolhas pontuais e uma composição equilibrada, foi possível criar espaços mais acolhedores, funcionais e visualmente harmoniosos, mantendo a identidade e os recursos já disponíveis na casa.',
+];
+
+const casaAzeitaoImages: GalleryItem[] = [
+  {
+    title: 'Sala de estar',
+    src: '/projetos/casa-azeitao/sala-de-estar.png',
+    alt: 'Sala de estar do projeto Casa Azeitão',
+    description: casaAzeitaoDescription[2],
+  },
+  {
+    title: 'Sala de jantar',
+    src: '/projetos/casa-azeitao/sala-de-jantar.png',
+    alt: 'Sala de jantar do projeto Casa Azeitão',
+    description: casaAzeitaoDescription[2],
+  },
+  {
+    title: 'Cozinha',
+    src: '/projetos/casa-azeitao/cozinha.png',
+    alt: 'Cozinha do projeto Casa Azeitão',
+    description: casaAzeitaoDescription[1],
+  },
+  {
+    title: 'Casa de banho',
+    src: '/projetos/casa-azeitao/casa-de-banho.png',
+    alt: 'Casa de banho do projeto Casa Azeitão',
+    description: casaAzeitaoDescription[1],
+  },
+  {
+    title: 'Corredor',
+    src: '/projetos/casa-azeitao/corredor.png',
+    alt: 'Corredor do projeto Casa Azeitão',
+    description: casaAzeitaoDescription[0],
+  },
+  {
+    title: 'Quarto casal',
+    src: '/projetos/casa-azeitao/quarto-casal.png',
+    alt: 'Quarto de casal do projeto Casa Azeitão',
+    description: casaAzeitaoDescription[2],
+  },
+  {
+    title: 'Quarto de visita',
+    src: '/projetos/casa-azeitao/quarto-de-visita.png',
+    alt: 'Quarto de visita do projeto Casa Azeitão',
+    description: casaAzeitaoDescription[2],
+  },
+];
+
+const projects: Project[] = [
+  {
+    title: 'Casa Douro',
+    lead: 'Projeto residencial com imagens grandes, zoom suave, parallax discreto e lightbox ao clique.',
+    description: [
+      'Casa Douro é um projeto que explora o encontro entre a cultura brasileira e a portuguesa através do design de interiores.',
+      'A proposta transforma referências afetivas, materiais naturais e elementos da arquitetura tradicional em uma linguagem contemporânea, marcada pela simplicidade, pelo conforto e pela sofisticação.',
+      'A combinação entre madeira, pedra natural, azulejos, vegetação e uma paleta inspirada nas paisagens dos dois países cria ambientes acolhedores, onde identidade, memória e funcionalidade coexistem de forma equilibrada.',
+      'Cada espaço foi concebido para traduzir a história da família, fazendo da casa um lugar de pertencimento e conexão entre origens e novos começos.',
+    ],
+    stats: ['Madeira e pedra natural', 'Paleta luso-brasileira', 'Layout afetivo'],
+    images: casaDouroImages,
+  },
+  {
+    title: 'Casa Figueiró',
+    lead: 'Remodelação em Figueiró dos Vinhos a partir da recuperação integral de uma antiga ruína.',
+    description: casaFigueiroDescription,
+    stats: ['Ruína restaurada', 'Pedra preservada', 'Equilíbrio contemporâneo'],
+    images: casaFigueiroImages,
+  },
+  {
+    title: 'Casa Azeitão',
+    lead: 'Projeto focado em organizar e harmonizar ambientes a partir do mobiliário existente do cliente.',
+    description: casaAzeitaoDescription,
+    stats: ['Mobiliário existente', 'Complementos acessíveis', 'Ambientes harmonizados'],
+    images: casaAzeitaoImages,
+  },
+];
+
 function scrollToSection(id: string) {
   const target = document.getElementById(id);
   target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -127,7 +284,7 @@ function SectionHeading({ eyebrow, title, lead }: { eyebrow: string; title: stri
 
 export default function Page() {
   const [scrolled, setScrolled] = useState(false);
-  const [activeImage, setActiveImage] = useState<number | null>(null);
+  const [activeImage, setActiveImage] = useState<ActiveImage | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showWhatsapp, setShowWhatsapp] = useState(false);
   const [showEmail, setShowEmail] = useState(false);
@@ -157,7 +314,7 @@ export default function Page() {
 
   const activeProject = useMemo(() => {
     if (activeImage === null) return null;
-    return projectImages[activeImage];
+    return projects[activeImage.projectIndex]?.images[activeImage.imageIndex] ?? null;
   }, [activeImage]);
 
   const copyEmail = async () => {
@@ -364,77 +521,72 @@ export default function Page() {
           <div className="container project-shell">
             <SectionHeading
               eyebrow="Projetos"
-              title="Uma galeria pensada para imagens grandes e presença editorial."
-              lead="O primeiro projeto já nasce com a estrutura pronta para crescer: grandes imagens, zoom suave, parallax discreto e lightbox ao clique."
+              title="Projetos autorais com identidade e memória."
+              lead="Cada projeto reúne imagens, narrativa e detalhes para apresentar a intenção completa dos espaços."
             />
 
-            <motion.article
-              className="panel project-feature"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.28 }}
-              transition={{ duration: 0.7 }}
-            >
-              <div
-                className="project-image"
-                onClick={() => setActiveImage(0)}
-                onKeyDown={(event) => handleActivate(event, () => setActiveImage(0))}
-                role="button"
-              tabIndex={0}
-            >
-                <Image src={projectImages[0].src} alt={projectImages[0].alt} fill priority sizes="(max-width: 1080px) 100vw, 58vw" />
-                <div className="project-overlay" />
-              </div>
-              <div className="project-copy">
-                <div>
-                  <div className="eyebrow">
-                    <span>Projeto em destaque</span>
-                    <span aria-hidden>•</span>
-                  </div>
-                  <h3>Entre Dois Mundos, Um Só Lar</h3>
-                </div>
-                <p>
-                  Entre Dois Mundos, Um Só Lar é um projeto que explora o encontro entre a cultura brasileira e a portuguesa através do design de interiores.
-                </p>
-                <p>
-                  A proposta transforma referências afetivas, materiais naturais e elementos da arquitetura tradicional em uma linguagem contemporânea, marcada pela simplicidade, pelo conforto e pela sofisticação.
-                </p>
-                <p>
-                  A combinação entre madeira, pedra natural, azulejos, vegetação e uma paleta inspirada nas paisagens dos dois países cria ambientes acolhedores, onde identidade, memória e funcionalidade coexistem de forma equilibrada.
-                </p>
-                <p>
-                  Cada espaço foi concebido para traduzir a história da família, fazendo da casa um lugar de pertencimento e conexão entre origens e novos começos.
-                </p>
-                <div className="project-stats">
-                  <span className="project-stat">Madeira e pedra natural</span>
-                  <span className="project-stat">Paleta luso-brasileira</span>
-                  <span className="project-stat">Layout afetivo</span>
-                </div>
-              </div>
-            </motion.article>
-
-            <div className="gallery-grid">
-              {projectImages.map((image, index) => (
-                <motion.div
-                  key={image.title}
-                  className={`project-thumb ${imageThumbLayout[index]}`}
-                  initial={{ opacity: 0, y: 20 }}
+            {projects.map((project, projectIndex) => (
+              <div className="project-block" key={project.title}>
+                <motion.article
+                  className="panel project-feature"
+                  initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.22 }}
-                  transition={{ duration: 0.55, delay: index * 0.05 }}
-                  onClick={() => setActiveImage(index)}
-                  onKeyDown={(event) => handleActivate(event, () => setActiveImage(index))}
-                  role="button"
-                  tabIndex={0}
+                  viewport={{ once: true, amount: 0.28 }}
+                  transition={{ duration: 0.7 }}
                 >
-                  <Image src={image.src} alt={image.alt} fill sizes="(max-width: 1080px) 100vw, 50vw" />
-                  <div className="project-overlay" />
-                  <span className="thumb-label">
-                    <Maximize2 size={14} /> {image.title}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
+                  <div
+                    className="project-image"
+                    onClick={() => setActiveImage({ projectIndex, imageIndex: 0 })}
+                    onKeyDown={(event) => handleActivate(event, () => setActiveImage({ projectIndex, imageIndex: 0 }))}
+                    role="button"
+                    tabIndex={0}
+                  >
+                    <Image src={project.images[0].src} alt={project.images[0].alt} fill priority={projectIndex === 0} sizes="(max-width: 1080px) 100vw, 58vw" />
+                    <div className="project-overlay" />
+                  </div>
+                  <div className="project-copy">
+                    <div>
+                      <div className="eyebrow">
+                        <span>{projectIndex === 0 ? 'Projeto em destaque' : 'Novo projeto'}</span>
+                        <span aria-hidden>•</span>
+                      </div>
+                      <h3>{project.title}</h3>
+                    </div>
+                    {project.description.map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+                    <div className="project-stats">
+                      {project.stats.map((stat) => (
+                        <span className="project-stat" key={stat}>{stat}</span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.article>
+
+                <div className="gallery-grid">
+                  {project.images.map((image, imageIndex) => (
+                    <motion.div
+                      key={image.title}
+                      className={`project-thumb ${imageThumbLayout[imageIndex % imageThumbLayout.length]}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, amount: 0.22 }}
+                      transition={{ duration: 0.55, delay: imageIndex * 0.05 }}
+                      onClick={() => setActiveImage({ projectIndex, imageIndex })}
+                      onKeyDown={(event) => handleActivate(event, () => setActiveImage({ projectIndex, imageIndex }))}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      <Image src={image.src} alt={image.alt} fill sizes="(max-width: 1080px) 100vw, 50vw" />
+                      <div className="project-overlay" />
+                      <span className="thumb-label">
+                        <Maximize2 size={14} /> {image.title}
+                      </span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -634,10 +786,18 @@ export default function Page() {
                 </p>
                 <p className="subtle-note">Clique fora ou pressione Esc para fechar.</p>
                 <div className="modal-nav">
-                  <button type="button" className="button button-ghost" onClick={() => setActiveImage((current) => (current === null ? 0 : (current - 1 + projectImages.length) % projectImages.length))}>
+                  <button type="button" className="button button-ghost" onClick={() => setActiveImage((current) => {
+                    if (current === null) return { projectIndex: 0, imageIndex: 0 };
+                    const total = projects[current.projectIndex].images.length;
+                    return { ...current, imageIndex: (current.imageIndex - 1 + total) % total };
+                  })}>
                     <ChevronLeft size={16} /> Anterior
                   </button>
-                  <button type="button" className="button button-primary" onClick={() => setActiveImage((current) => (current === null ? 0 : (current + 1) % projectImages.length))}>
+                  <button type="button" className="button button-primary" onClick={() => setActiveImage((current) => {
+                    if (current === null) return { projectIndex: 0, imageIndex: 0 };
+                    const total = projects[current.projectIndex].images.length;
+                    return { ...current, imageIndex: (current.imageIndex + 1) % total };
+                  })}>
                     Próxima <ChevronRight size={16} />
                   </button>
                 </div>

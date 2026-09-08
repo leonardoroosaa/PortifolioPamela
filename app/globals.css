@@ -547,6 +547,15 @@ a:focus-visible,
   gap: 1.2rem;
 }
 
+.project-block {
+  display: grid;
+  gap: 1rem;
+}
+
+.project-block + .project-block {
+  margin-top: 2.2rem;
+}
+
 .project-feature {
   min-height: 560px;
   display: grid;
